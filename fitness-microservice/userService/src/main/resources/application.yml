@@ -13,3 +13,5 @@ spring:
     enabled: false
     
 
+server:
+  port: 8081
