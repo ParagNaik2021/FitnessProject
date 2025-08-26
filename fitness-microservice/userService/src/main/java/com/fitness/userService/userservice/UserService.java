@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
-    private  UserRepository userRepositor;
+    private UserRepository userRepositor;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -42,5 +44,18 @@ public class UserService {
 
         return userResponse;
 
+    }
+
+    public UserResponse getUserProfile(String userID) {
+
+        User user = userRepositor.findById(userID).orElseThrow(() -> new RuntimeException("User not present"));
+        UserResponse userResponse = new UserResponse();
+        userResponse.setEmail(user.getEmail());
+        userResponse.setFirstName(user.getFirstName());
+        userResponse.setLastName(user.getLastName());
+        userResponse.setCreatedAt(user.getCreatedAt());
+        userResponse.setUpdatedAt(user.getUpdatedAt());
+
+        return userResponse;
     }
 }
