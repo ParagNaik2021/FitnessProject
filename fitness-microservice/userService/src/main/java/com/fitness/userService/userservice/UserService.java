@@ -50,6 +50,7 @@ public class UserService {
 
         User user = userRepositor.findById(userID).orElseThrow(() -> new RuntimeException("User not present"));
         UserResponse userResponse = new UserResponse();
+        userResponse.setId(user.getId());
         userResponse.setEmail(user.getEmail());
         userResponse.setFirstName(user.getFirstName());
         userResponse.setLastName(user.getLastName());
