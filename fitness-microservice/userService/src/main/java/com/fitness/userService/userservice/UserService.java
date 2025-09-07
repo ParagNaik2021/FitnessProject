@@ -6,6 +6,7 @@ import com.fitness.userService.dto.UserResponse;
 import com.fitness.userService.models.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     private UserRepository userRepositor;
@@ -58,5 +60,10 @@ public class UserService {
         userResponse.setUpdatedAt(user.getUpdatedAt());
 
         return userResponse;
+    }
+
+    public Boolean existByUserId(String userID) {
+        log.info("Calling user service for {}", userID);
+        return userRepositor.existsById(userID);
     }
 }
