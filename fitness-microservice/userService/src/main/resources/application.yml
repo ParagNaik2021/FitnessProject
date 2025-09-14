@@ -1,20 +1,6 @@
+#All the configurations are shipped to configuration server
 spring:
   application:
-    name: userService
-  datasource:
-    url: jdbc:postgresql://localhost:5432/fitness-micro-user
-    username: postgres
-    password: Welcome@18081994
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  security:
-    enabled: false
-server:
-  port: 8081
-eureka:
-  client:
-    service-url:
-      defaultZone:  http://localhost:8761/eureka/
-
+     name: user-service
+  config:
+    import: optional:configserver:http://localhost:8888
