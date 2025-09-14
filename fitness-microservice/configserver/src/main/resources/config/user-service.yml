@@ -3,6 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/fitness-micro-user
     username: postgres
     password: Welcome@18081994
+
   jpa:
     hibernate:
       ddl-auto: update
